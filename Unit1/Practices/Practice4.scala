@@ -13,7 +13,7 @@ def fib(n:Int):Int={
      return a
     }
 
-fib3(9)
+fib(10)
   
   
   //Exercise 4
@@ -32,5 +32,5 @@ fib3(9)
     }
 
 
-fib4(9)
+fib(10)
 
