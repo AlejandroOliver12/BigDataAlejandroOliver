@@ -4,7 +4,7 @@ def fib3(n:Int):Int={
     b=1
     
     for (k<- Range(0,n)){
-    {
+    
         c=b+a
         a=b
         b=c
