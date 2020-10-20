@@ -1,5 +1,5 @@
 //Exercise 3
-def fib3(n:Int):Int={
+def fib(n:Int):Int={
     a=0
     b=1
     
@@ -17,7 +17,7 @@ fib3(9)
   
   
   //Exercise 4
-  def fib4(n:Int):Int={
+  def fib(n:Int):Int={
     a=0
     b=1
     
