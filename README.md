@@ -356,7 +356,7 @@ df.select(max("Company")).show()
 
 // 15 Returns the Pearson Correlation Coefficient for two columns.
 df.select(corr("Sales","Sales2")).show()
-
+```
 
 ### Investigation
 #####  INSTITUTO TECNOLÓGICO DE TIJUANA
