@@ -47,6 +47,9 @@ The squared Pearson correlation coefficient can also be interpreted as an index 
 Point Approach Index
 Finally, the last interpretation of the squared Pearson correlation coefficient would indicate the approximation of the points to the commented regression line. The greater the value of the coefficient (closer to 1), the closer the points are to Y '(to the line).
 
+
+bibliographies
+
 [1]https://www.questionpro.com/blog/es/coeficiente-de-correlacion-de-pearson/
 [2]https://psicologiaymente.com/miscelanea/coeficiente-correlacion-pearson
 
