@@ -19,6 +19,7 @@
 #### Practice5
 #### Pair Coding
 #### Homework 
+#### Test
 
 ### Practice 1
 #### Instructions
@@ -451,4 +452,107 @@ Finally, the last interpretation of the squared Pearson correlation coefficient 
 [1]https://www.questionpro.com/blog/es/coeficiente-de-correlacion-de-pearson/
 [2]https://psicologiaymente.com/miscelanea/coeficiente-correlacion-pearson
 
+
+### Test
+
+#### Instructions
+Answer the following questions with Spark DataFrames using the "CSV"
+Netflix_2011_2016.csv.
+1. Start a simple Spark session.
+2. Upload Netflix Stock CSV file, have Spark infer data types.
+3. What are the names of the columns?
+4. What is the scheme like?
+5. Print the first 5 columns.
+6. Use describe () to learn about the DataFrame.
+7. Create a new dataframe with a new column called "HV Ratio" which is the
+relationship between the price of the column "High" versus the column "Volume" of
+shares traded for one day. (Hint: It is a column operation).
+8. What day had the highest peak in the “Close” column?
+9. Write in your own words in a comment of your code. Which is the
+meaning of the Close column “Close”?
+10. What is the maximum and minimum of the “Volume” column?
+11.With Scala / Spark $ Syntax answer the following:
+◦ Hint: Basically very similar to the dates session, you will have to create another
+dataframe to answer some of the items.
+to. How many days was the “Close” column less than $ 600?
+b. What percentage of the time was the “High” column greater than $ 500?
+c. What is the Pearson correlation between column "High" and column "Volume"?
+d. What is the maximum in the “High” column per year?
+and. What is the “Close” column average for each calendar month?
+Evaluation instructions
+
+- Delivery time 4 days
+- When finished put the code and documentation with its explanation in the branch
+corresponding from your github, also make your explanation of the solution in your
+google drive in google document (Cover, Introduction, Development, etc).
+- Finally defend its development in a video of 8-10 min explaining its solution and
+feedback, this will serve to give your rating of this evaluation practice, this
+video must be uploaded to youtube to be shared by a public link (use
+google meet with the cameras on and record your defense to raise the
+video).
+Happy Coding :)!
+
+```scala
+//1. Start a simple Spark session.
+
+import org.apache.spark.sql.SparkSession
+
+val spark = SparkSession.builder().getOrCreate()
+
+
+//2. Upload Netflix Stock CSV file, have Spark infer data types. 
+
+val df =spark.read.option("header","true").option("inferSchema","true").csv("Netflix_2011_2016.csv")
+
+//3. What are the names of the columns?
+
+df.columns
+//4. What is the scheme like?
+
+df.printSchema()
+//5. Print the first 5 columns.
+
+df.head(5)
+//6. Use describe () to learn about the DataFrame.
+
+df.describe().show()
+
+//7.Create a of dataframe with column called "HV Ratio" which is the
+//relationship between the price of the column "High" versus the column "Volume" of
+//shares traded for one day.
+val df2 = df.withColumn("HV Ratio",df("High")/df("Volume"))
+
+
+//8.What day had the highest peak in the “Close” column?
+df.orderBy($"High".desc).show(1)
+
+//9.for me column close represents the average of the document
+df.select(mean("Close")).show()
+
+//10. What is the max and min of the Volume column?
+df.select(max("Volume")).show()
+df.select(min("Volume")).show()
+
+// For Scala/Spark $ Syntax
+import spark.implicits._
+
+//11a. How many days was the Close lower than $ 600?
+df.filter($"Close"<600).count()
+
+//11.b What percentage of the time was the High greater than $500 ?
+(df.filter($"High">500).count()*1.0/df.count())*100
+
+//11.c What is the Pearson correlation between High and Volume?
+df.select(corr("High","Volume")).show()
+
+//11.d What is the max High per year?
+val yeardf = df.withColumn("Year",year(df("Date")))
+val yearmaxs = yeardf.select($"Year",$"High").groupBy("Year").max()
+yearmaxs.select($"Year",$"max(High)").show()
+
+//11.e What is the average Close for each Calender Month?
+val monthdf = df.withColumn("Month",month(df("Date")))
+val monthavgs = monthdf.select($"Month",$"Close").groupBy("Month").mean()
+monthavgs.select($"Month",$"avg(Close)").show()
+```
 
