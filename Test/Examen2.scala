@@ -4,7 +4,7 @@ import org.apache.spark.ml.feature.VectorAssembler
 import org.apache.spark.ml.feature.{VectorAssembler, StringIndexer}
 import org.apache.spark.ml.linalg.Vectors
 
-// The dataFrame is loaded from a csv
+//1 The dataFrame is loaded from a csv
 val data  = spark.read.option("header","true").option("inferSchema", "true").format("csv").load("iris.csv")
 
 
@@ -45,7 +45,7 @@ val splits = dataIndexed.randomSplit(Array(0.7, 0.3), seed = 1234L)
 val train = splits(0)
 val test = splits(1)
 
-// Set the layer settings for the model
+//7 Set the layer settings for the model
 val layers = Array[Int](4, 5, 4, 3)
 
 // The Multilayer algorithm trainer is configured
