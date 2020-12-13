@@ -39,7 +39,7 @@
     8. Print the model results
     
     
-    ```scala
+   ```scala
 import org.apache.spark.ml.classification.MultilayerPerceptronClassifier
 import org.apache.spark.ml.evaluation.MulticlassClassificationEvaluator
 import org.apache.spark.ml.feature.VectorAssembler
