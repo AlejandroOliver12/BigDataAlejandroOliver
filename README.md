@@ -25,6 +25,25 @@
 #### Practice10
 #### HomeWork
 #### Test
+
+### Practice1
+####   instructions practice1
+1. import the linearregression
+2. use the following code to configure errors
+3. start a simple spark session
+4. use spark for the clean-ecommerce csv file
+5. print the schema on the dataframe
+6. print an example row from the dataframe
+7. transform the data frame so that it takes the form of ("label", "features")
+8. rename the yearly amount spent column as "label"
+9. the vectorassembler object
+10. use the assembler to transform our dataframe to two columns: label and features
+11. create an object for line regression model
+12. fit the model for the data and call this model lrmodel
+13. print the coefficients and intercept for the linear regression
+14. summarize the model on the training set and print the output of some metrics
+15. show the residuals values, the rmse, the mse, and also the r^2
+
 #####  Instructions Test
 1. Load into an Iris.csv dataframe found at https://github.com/jcromerohdz/iris, prepare the necessary data to be processed by the following algorithm (Important, this cleaning must be done by means of a script from Scala in Spark)
     Use the Spark Mllib library the Machine Learning algorithm corresponding to multilayer perceptron
