@@ -107,4 +107,4 @@ val evaluator = new MulticlassClassificationEvaluator().setMetricName("accuracy"
 
 // 8 The result of the precision is printed
 println(s"Test set accuracy = ${evaluator.evaluate(predictionAndLabels)}")
-```
+
