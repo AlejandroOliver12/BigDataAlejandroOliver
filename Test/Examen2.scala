@@ -13,14 +13,14 @@ data.columns
 
 
 
-// The schema of the dataFrame data is printed
+//3.The schema of the dataFrame data is printed
 data.printSchema()
 
 // null fields are removed
 val dataClean = data.na.drop()
 
 
-// We see the first 5 data and observe that the DataFrame does not have adequate headers
+//4. We see the first 5 data and observe that the DataFrame does not have adequate headers
 data.show(5)
 ///
 //5.Describe Metod
